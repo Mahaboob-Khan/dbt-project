@@ -19,8 +19,8 @@ order_totals as (
 
         order_id,
         payment_status,
-        sum(payment_amount) as order_value_dollars
-
+        sum(payment_amount) as order_value_dollars,
+        max(created_at) as payment_finalized_date
     from
         payments
 
@@ -33,7 +33,8 @@ order_values_joined as (
     select
         orders.*,
         order_totals.payment_status,
-        order_totals.order_value_dollars
+        order_totals.order_value_dollars,
+        order_totals.payment_finalized_date
     from
         orders
     left join
