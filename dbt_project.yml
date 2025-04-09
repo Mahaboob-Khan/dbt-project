@@ -43,3 +43,10 @@ models:
 
     marts:
       +materialized: table
+
+  snowflake_spend:
+    +enabled: true
+    +schema: spend
+    xf:
+      snowflake_warehouse_metering_xf:
+        +enabled: true
