@@ -1,0 +1,13 @@
+version: 2
+
+seeds:
+  - name: employees
+    description:  employees data
+    columns:
+      - name: employee_id
+        description: Primary key of employees
+        tests:
+          - unique
+          - not_null
+            
+            
