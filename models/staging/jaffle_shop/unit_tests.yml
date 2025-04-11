@@ -35,3 +35,18 @@ unit_tests:
     expect:
       rows:
         - {days_since_ordered: 24}
+
+  - name: test_full_name_field
+    description: Unit test for full_name field logic
+    model: stg_jaffle_shop__customers
+    given:
+      - input: source('jaffle_shop', 'customers')
+        rows:
+          - {first_name: Michael, last_name: Jordan}
+          - {first_name: John, last_name: doE}
+          - {first_name: Jane, last_name: '   doe'}
+    expect:
+      rows:
+        - {full_name: Michael Jordan}
+        - {full_name: John Doe}
+        - {full_name: Jane Doe}
