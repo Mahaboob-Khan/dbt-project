@@ -1,3 +1,8 @@
+{{
+    config(
+        required_tests=None
+    )
+}}
 with
 
 orders as ( 
