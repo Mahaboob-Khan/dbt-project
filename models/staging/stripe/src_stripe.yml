@@ -14,4 +14,27 @@ sources:
           warn_after:
             count: 24
             period: hour
+        columns:
+          - name: id
+            tests:
+              - not_null
+              - unique:
+                  config:
+                    severity: warn
+                    error_if: ">100"
+                    warn_if: ">10"
+                    where: "paymentmethod = 'success'"
+          - name: paymentmethod
+            tests:
+              - accepted_values:
+                  values:
+                    - bank_transfer
+                    - coupon
+                    - credit_card
+                    - gift_card
+                  config:
+                    limit: 10
+                    store_failures: true
+                    schema: test_failures
+
         
