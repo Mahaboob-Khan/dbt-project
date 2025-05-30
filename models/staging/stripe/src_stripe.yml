@@ -35,6 +35,6 @@ sources:
                   config:
                     limit: 10
                     store_failures: true
-                    schema: test_failures
+                    schema: test_failures  # {{ profile.schema }}_dbt_test__audit --> default schema
 
         
